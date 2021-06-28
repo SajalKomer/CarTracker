@@ -1,19 +1,27 @@
 package com.mycompany.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
 public class Reading {
     @Id
     @Column(columnDefinition = "VARCHAR(36)")
-    private String Id;
+    private String id;
     private String vin;
     private double latitude;
     private double longitude;
-    private Timestamp timestamp;
+
+    @Column(columnDefinition = "DATETIME")
+    @DateTimeFormat(pattern = "YYYY-MM-DDThh:mm:ss.sTZD")
+    private Date timestamp;
+
     private double fuelVolume;
     private double speed;
     private double engineHp;
@@ -25,15 +33,15 @@ public class Reading {
     private Tires tires;
 
     public Reading() {
-        this.Id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getVin() {
@@ -64,7 +72,7 @@ public class Reading {
         return DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG).format(timestamp);
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -135,7 +143,7 @@ public class Reading {
     @Override
     public String toString() {
         return "Reading{" +
-                "Id='" + Id + '\'' +
+                "Id='" + id + '\'' +
                 ", vin='" + vin + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +

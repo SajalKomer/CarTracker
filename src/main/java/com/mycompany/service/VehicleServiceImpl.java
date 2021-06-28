@@ -24,10 +24,10 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Transactional(readOnly = true)
-    public Vehicle findOne(String id) {
-        Optional<Vehicle> existing = repository.findById(id);
+    public Vehicle findOne(String vin) {
+        Optional<Vehicle> existing = repository.findByVin(vin);
         if (!existing.isPresent()) {
-            throw new ResourceNotFoundException("Vehicle with VIN " + id + " doesn't exist.");
+            throw new ResourceNotFoundException("Vehicle with VIN " + vin + " doesn't exist.");
         }
         return existing.get();
     }
@@ -43,10 +43,10 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Transactional
-    public void delete(String id) {
-        Optional<Vehicle> existing = repository.findById(id);
+    public void delete(String vin) {
+        Optional<Vehicle> existing = repository.findByVin(vin);
         if (!existing.isPresent()) {
-            throw new ResourceNotFoundException("Employee with id " + id + " doesn't exist.");
+            throw new ResourceNotFoundException("Employee with vin " + vin + " doesn't exist.");
         }
         repository.delete(existing.get());
     }

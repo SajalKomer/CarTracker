@@ -7,4 +7,7 @@ import java.util.List;
 public interface ReadingService {
     Reading create(Reading reading);
     List<Reading> findAll();
+
+    Reading findOne(String id);
+
 }

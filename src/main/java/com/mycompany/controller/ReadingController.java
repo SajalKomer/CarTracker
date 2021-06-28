@@ -20,7 +20,7 @@ public class ReadingController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
                                                 produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Reading create(@RequestBody Reading reading){
+    public Reading create(@RequestBody Reading reading) {
         return service.create(reading);
     }
 

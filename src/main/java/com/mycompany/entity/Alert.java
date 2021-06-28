@@ -14,7 +14,7 @@ public class Alert {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @Column(columnDefinition = "VARCHAR(17)")
     private String vin;
@@ -35,20 +35,12 @@ public class Alert {
     @Column(columnDefinition = "DECIMAL(11,8)")
     private double longitude;
 
-    public double getLatitude() {
-        return latitude;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getVin() {
@@ -75,14 +67,6 @@ public class Alert {
         this.description = description;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTimestamp() {
         return DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG).format(timestamp);
     }
@@ -90,6 +74,23 @@ public class Alert {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
 
     @Override
     public String toString() {
